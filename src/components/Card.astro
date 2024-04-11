@@ -1,0 +1,18 @@
+---
+interface Props {
+	title: string;
+	body: string;
+	icono: string;
+
+}
+const { icono, title, body } = Astro.props;
+---
+<div class="flex my-3">
+	<picture class="bg-[#db3e298a] w-14 h-14 rounded-full flex justify-center items-center">
+		<ion-icon class="w-14 h-7 text-center" name={icono}></ion-icon>
+	</picture>
+	<article class="mx-8">
+		<h3 class="font-bold text-lg mb-2 text-[#DB3F29]">{title}</h3>
+		<p>{body}</p>
+	</article>
+</div>
