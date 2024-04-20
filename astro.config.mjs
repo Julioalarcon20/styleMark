@@ -12,4 +12,8 @@ export default defineConfig({
   image: {
     domains: ["astro.build"],
   },
+  static: {
+    directory: "public", // Especifica la carpeta donde se encuentran los archivos estáticos
+    // Puedes añadir más opciones si es necesario
+  },
 });
