@@ -4,7 +4,7 @@ import 'kleur/colors';
 import 'html-escaper';
 import 'clsx';
 import '@astrojs/internal-helpers/path';
-import { $ as $$Image } from './generic_otlXM6Ez.mjs';
+import { $ as $$Image } from './generic_BkJjQ56k.mjs';
 import 'aos';
 
 var __freeze$2 = Object.freeze;
