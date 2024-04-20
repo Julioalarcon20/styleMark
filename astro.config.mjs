@@ -10,6 +10,9 @@ export default defineConfig({
   output: "server",
   adapter: netlify(),
   image: {
-    remotePatterns: [{ protocol: "https" }],
+    domains: ["astro.build"],
+  },
+  experimental: {
+    assets: true
   }
 });
