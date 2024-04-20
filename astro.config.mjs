@@ -11,5 +11,6 @@ export default defineConfig({
   adapter: netlify(),
   image: {
     remotePatterns: [{ protocol: "https" }],
-  }
+  },
+  assets: '/public/'
 });
