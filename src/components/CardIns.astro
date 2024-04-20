@@ -7,16 +7,18 @@ interface Props {
 	foto: string;
 	alt: string;
     url: string;
+    logo:string;
 }
-const { foto,url, name, idname , alt} = Astro.props;
+const { foto,url, name,logo, idname , alt} = Astro.props;
 ---
-<div class="w-[600px] mx-5">
+<div class="md:w-[500px] w-[300px] md:mx-5 mx-3">
     <picture>
-        <Image width=600 loading="eager" height=100 src={foto} alt={alt}>
+        <Image  width=600 loading="eager" height=100 src={foto} alt={alt}>
     </picture>
     <article class="my-5">
         <div class="flex items-center gap-2"> 
-            <div class="w-12 h-12 p-3 mr-2 bg-white rounded-full"></div>
+            <Image  src={logo} width=48 height=48 alt={alt} loading="eager"   class="w-12 h-12 mr-2 bg-white rounded-full">
+            </Image>            
             <div class=" w-full flex items-center justify-between">
                 <div>
                     <h3>{name}</h3>

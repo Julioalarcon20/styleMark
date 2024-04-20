@@ -1,10 +1,14 @@
-<nav class="w-full h-20">
+---
+import { Image } from "astro:assets";
+---
+
+ <nav id="menu-desktop" class="w-full h-20">
     <div class="flex md:relative lg:mx-20 mx-3 py-2 h-full justify-between flex-wrap items-center p-4">
         <picture>
-           <img class="md:h-10 h-12" src="/public/icon/logo.svg" alt="Logo Style Mark"/>
+           <img class="md:h-10 h-12" loading="eager" src="/public/icon/logo.svg" alt="Logo Style Mark"/>
         </picture>
         <button
-          data-collapse-toggle="navbar-solid-bg"
+          id="menu-toggle" 
           type="button"
           class="inline-flex p-2 w-10 h-10 justify-end text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400"
           aria-controls="navbar-solid-bg"
@@ -13,13 +17,13 @@
           <span><ion-icon name="menu-outline" class="h-6 w-6"></ion-icon></span>
         
         </button>
-        <div class="text-white md:flex hidden">
+        <div id="menu-links" class="text-white text-center md:flex hidden">
             <ul class="flex relative">
-                <li class="mx-5"><a href="#Inicio">Inicio</a></li>
-                <li class="mx-5"><a href="#Nosotros">Nosotros</a></li>
-                <li class="mx-5"><a href="#Servicios">Servicios</a></li>
-                <li class="mx-5"><a href="#Clientes">Clientes</a></li>
-                <li class="mx-5"><a href="">Contactos</a></li>
+                <li class="mx-5"><a rel="index" href="#Inicio">Inicio</a></li>
+                <li class="mx-5"><a rel="index" href="#Nosotros">Nosotros</a></li>
+                <li class="mx-5"><a rel="index" href="#Servicios">Servicios</a></li>
+                <li class="mx-5"><a rel="index" href="#Clientes">Clientes</a></li>
+                <li  class="mx-5"><a rel="index" href="#Contactos">Contactos</a></li>
             </ul>
         </div>
         <div class="text-white md:flex hidden">
@@ -30,3 +34,167 @@
         </div>
     </div>
 </nav>
+
+<style>
+
+
+@media (max-width: 800px) {
+    #menu-desktop{
+        display: none;
+    }
+}
+
+@media (min-width: 800px) {
+    #menu-mobile{
+        display: none;
+    }
+}
+
+</style>
+ <nav id="menu-mobile" class="nav w-full h-20 z- md:hidden fixed z-50 bg-[#13151a]">
+        <picture class="nav_logo">
+            <a href="/">
+                <Image width="130" height="10" loading="lazy" class="log_png md:h-10 h-12" src="/public/icon/logo.svg" alt="Style Mark">
+            </a>
+        </picture>
+        <ul class="nav_link nav_link--menu md:text-white ">
+            <li class="nav_items ">
+                <a rel="index" href="#Inicio" class="nav_links">Inicio</a>
+            </li>
+            <li class="nav_items ">
+                <a rel="index" href="#Nosotros" class="nav_links">Nosotros</a>
+            </li>
+            <li class="nav_items">
+                <a rel="index" href="#Servicios" class="nav_links">Servicios</a>
+            </li>
+            <li class="nav_items">
+                <a rel="index" href="#Clientes" class="nav_links">Clientes</a>
+            </li>
+            <li class="nav_items">
+                <a rel="index" href="#Contactos" class="nav_links">Contactos</a>
+            </li>
+
+            <!-- ICONO DE CERRAR -->
+            <i class='bx bx-message-square-x nav_close'></i>
+        </ul>
+        <div class="nav_menu mx-4 text-white ">
+            <i class='bx bx-menu-alt-right nav_img'></i>
+        </div>
+        <div class="text-white lg:flex hidden">
+            <ul class="flex relative">
+                <li class="mx-2"><a href="https://www.instagram.com/stylemark_ec/" aria-label="Facebook" ><ion-icon name="logo-facebook"  class="h-6 w-6 text-white"></ion-icon></a></li>
+                <li class="mx-2"><a href="https://www.facebook.com/stylemarkec" aria-label="Instagram" ><ion-icon name="logo-instagram" class="h-6 w-6 text-white"></ion-icon></a></li>
+            </ul>
+        </div>
+    </nav>
+    <style >
+        /* Nav */
+.nav{
+    display:flex;
+    align-items: center;
+}
+.nav_logo{
+    width:130px;
+}
+
+
+.nav_links:hover {
+    color: #DB3F29;
+}
+
+.nav_link{
+    margin-left:auto;
+    padding: 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    gap:2em;
+}
+.nav_menu{
+    margin-left:auto;
+    cursor: pointer;
+    display:none;
+}
+.nav_img{
+    display:block;
+    font-size:30px;
+}
+.nav_close::before{
+    display:var(--show,none);
+    font-size: 30px;
+}
+@media (max-width: 800px){
+    .nav_menu{
+        display: block;
+    }
+    .nav_link--menu{
+        position:fixed;
+        background-color: #fff;
+        color: black!important;
+        top:0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 100;
+        display:flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition:0.7s opacity ;
+    }
+    .nav_link--show{
+        --show:block;
+        opacity: 1;
+        pointer-events: unset;
+    }
+    .nav_close::before{
+        position: absolute;
+        top:30px;
+        right: 30px;
+        width: 30px;
+        cursor: pointer;
+    }
+}
+</style>
+<script>
+(function() {
+    const openbutton = document.querySelector(".nav_menu");
+    const nav = document.querySelector(".nav_link");
+    const cierre = document.querySelector(".nav_close");
+
+    // Agregar evento de clic a cada enlace del menú
+    const navLinks = document.querySelectorAll(".nav_links");
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Ocultar el menú móvil
+            nav!.classList.remove("nav_link--show");
+            document.body.style.overflow = 'auto';
+
+            // Obtener el ID del elemento al que se va a desplazar
+            const targetId = link.getAttribute('href')!.substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            // Realizar el desplazamiento hacia el elemento seleccionado
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    openbutton!.addEventListener("click", () => {
+        nav!.classList.add("nav_link--show");
+        document.body.style.overflow = 'hidden'; // Impide el desplazamiento vertical del cuerpo del documento
+    });
+
+    cierre!.addEventListener('click', () => {
+        nav!.classList.remove("nav_link--show");
+        document.body.style.overflow = 'auto'; // Habilita el desplazamiento vertical del cuerpo del documento
+    });
+})();
+
+</script>

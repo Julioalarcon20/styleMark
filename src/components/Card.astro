@@ -3,16 +3,15 @@ interface Props {
 	title: string;
 	body: string;
 	icono: string;
-
 }
 const { icono, title, body } = Astro.props;
 ---
-<div class="flex my-3">
-	<picture class="bg-[#db3e298a] w-14 h-14 rounded-full flex justify-center items-center">
-		<ion-icon class="w-14 h-7 text-center" name={icono}></ion-icon>
+<div class="md:flex my-3 ">
+	<picture class="bg-[#db3e298a] md:w-14 md:h-14 w-20 h-20 mr-6 md:mr-1 rounded-full flex justify-center items-center">
+		<ion-icon class="md:w-14 md:h-7 w-12 h-12 text-center " name={icono}></ion-icon>
 	</picture>
-	<article class="mx-8">
-		<h3 class="font-bold text-lg mb-2 text-[#DB3F29]">{title}</h3>
-		<p>{body}</p>
+	<article class="md:mx-8">
+		<h3 class="font-bold text-lg my-2 text-[#DB3F29]">{title}</h3>
+		<p class="text-justify">{body}</p>
 	</article>
 </div>
